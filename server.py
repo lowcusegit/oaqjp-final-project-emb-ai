@@ -9,10 +9,10 @@ def sent_detector():
     text_to_analyze = request.args.get('textToAnalyze')
     # Pass the text to the sentiment_analyzer function and store the response
     response = emotion_detector(text_to_analyze)
-    output = f"For the given statement, the system response is \
-        'anger': {response['anger']}, 'disgust': {response['disgust']}, \
-        'fear': {response['fear']}, 'joy': {response['joy']} and 'sadness': {response['sadness']}. \
-        The dominant emotion is joy {response['dominant_emotion']}"
+    output = f"For the given statement, the system response is"\
+        f" 'anger': {response['anger']}, 'disgust': {response['disgust']},"\
+        f" 'fear': {response['fear']}, 'joy': {response['joy']} and 'sadness': {response['sadness']}."\
+        f" The dominant emotion is {response['dominant_emotion']}"
     return output
 
 @app.route("/")
