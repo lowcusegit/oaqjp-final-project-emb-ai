@@ -9,6 +9,14 @@ def emotion_detector(text_to_analyse): # Define a function named emotion_detecto
     formatted_response = json.loads(response.text)
     # parsing response according to emotions
     emotion_list=["anger", "disgust", "fear", "joy", "sadness"]
+    # Error handling
+    if response.status_code == 400:
+        output = { emotion : None
+        for emotion in emotion_list
+        }
+        output["dominant_emotion"] = None
+        return output
+
     output = { emotion : formatted_response["emotionPredictions"][0]["emotion"][emotion]
     for emotion in emotion_list
     }
